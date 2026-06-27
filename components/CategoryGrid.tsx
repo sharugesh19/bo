@@ -7,10 +7,10 @@ import { ArrowRight } from 'lucide-react';
 
 export function CategoryGrid() {
   const categories = [
-    { name: "Sarees", image: "https://images.unsplash.com/photo-1529635970-29b1a5a41c09?w=600&q=80", className: "col-span-1 md:col-span-2 row-span-2 h-[400px] md:h-[600px]" },
-    { name: "Lehengas", image: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&q=80", className: "col-span-1 h-[300px]" },
-    { name: "Kurtas", image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&q=80", className: "col-span-1 h-[300px]" },
-    { name: "Gowns", image: "https://images.unsplash.com/photo-1496747507725-b82b3a033f11?w=600&q=80", className: "col-span-1 md:col-span-2 h-[300px]" },
+    { name: "Sarees", slug: "sarees", image: "https://images.unsplash.com/photo-1529635970-29b1a5a41c09?w=600&q=80", className: "col-span-1 md:col-span-2 row-span-2 h-[400px] md:h-[600px]" },
+    { name: "Lehengas", slug: "lehengas", image: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&q=80", className: "col-span-1 h-[300px]" },
+    { name: "Kurtas", slug: "kurtas", image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&q=80", className: "col-span-1 h-[300px]" },
+    { name: "Gowns", slug: "gowns", image: "https://images.unsplash.com/photo-1496747507725-b82b3a033f11?w=600&q=80", className: "col-span-1 md:col-span-2 h-[300px]" },
   ];
 
   return (
@@ -48,7 +48,7 @@ export function CategoryGrid() {
               <h3 className="font-cormorant text-3xl text-white">{category.name}</h3>
               <ArrowRight className="text-white w-6 h-6 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500" />
             </div>
-            <Link href="/products" className="absolute inset-0 z-10" aria-label={`Shop ${category.name}`} />
+            <Link href={`/category/${category.slug}`} className="absolute inset-0 z-10" aria-label={`Shop ${category.name}`} />
           </m.div>
         ))}
       </div>

@@ -70,7 +70,11 @@ export function Newsletter() {
         </m.p>
 
         <form onSubmit={handleSubmit} className="relative max-w-md mx-auto group">
+          <label htmlFor="newsletter-email" className="sr-only">
+            Email address
+          </label>
           <input 
+            id="newsletter-email"
             type="email" 
             placeholder="Enter your email address" 
             required

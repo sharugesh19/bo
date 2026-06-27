@@ -34,9 +34,10 @@ export function VideoSection() {
         >
           Crafted for the Extraordinary
         </m.h2>
-        <m.button
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+      <m.button
+        type="button"
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.5 }}
           className="group relative inline-flex items-center justify-center w-32 h-32 rounded-full border border-white/30 hover:border-champagne transition-colors duration-500"

@@ -57,7 +57,7 @@ export function BrandStory() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="font-dm text-charcoal/80 text-lg mb-6 leading-relaxed"
           >
-            Every piece at Aura is a testament to India's rich textile heritage, reimagined for the contemporary silhouette. We believe in fashion that transcends seasons.
+            Every piece at Aura is a testament to India&apos;s rich textile heritage, reimagined for the contemporary silhouette. We believe in fashion that transcends seasons.
           </m.p>
 
           <m.p 
@@ -77,7 +77,7 @@ export function BrandStory() {
             transition={{ duration: 1, delay: 0.5 }}
             className="font-playfair text-2xl lg:text-3xl text-charcoal border-l-2 border-champagne pl-6 py-2"
           >
-            "Elegance is not about being noticed, it's about being remembered."
+            &quot;Elegance is not about being noticed, it&apos;s about being remembered.&quot;
           </m.blockquote>
         </div>
       </div>

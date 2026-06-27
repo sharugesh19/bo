@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { Navbar } from '@/components/Navbar';
 import { TrustBar } from '@/components/TrustBar';
 import { HeroSection } from '@/components/HeroSection';
@@ -16,9 +17,18 @@ import { InstagramGallery } from '@/components/InstagramGallery';
 import { LimitedEdition } from '@/components/LimitedEdition';
 import { Newsletter } from '@/components/Newsletter';
 
+export const metadata: Metadata = {
+  title: 'Luxury Indian Boutique Fashion - Shop Sarees, Lehengas and More',
+  description:
+    "Discover Aura Boutique - India's premium fashion destination for bridal lehengas, Banarasi sarees, designer kurtas and Indo-western gowns.",
+  alternates: {
+    canonical: 'https://auraboutique.in',
+  },
+};
+
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main id="main-content" className="min-h-screen">
       <Navbar />
       <TrustBar />
       <HeroSection />

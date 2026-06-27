@@ -65,7 +65,7 @@ export function LimitedEdition() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="font-dm text-ivory/80 text-lg mb-10 max-w-md"
             >
-              Only 12 pieces crafted worldwide. Featuring pure gold zardosi on royal velvet. Once they're gone, they're gone forever.
+              Only 12 pieces crafted worldwide. Featuring pure gold zardosi on royal velvet. Once they&apos;re gone, they&apos;re gone forever.
             </m.p>
 
             <div className="flex gap-4 mb-12">

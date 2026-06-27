@@ -110,7 +110,7 @@ export const products: Product[] = [
   },
   {
     id: "p7",
-    name: "Golden Tissue Tissue Saree",
+    name: "Golden Tissue Saree",
     price: 41000,
     category: "Sarees",
     badge: "Limited",
@@ -171,7 +171,7 @@ export const products: Product[] = [
   },
   {
     id: "p11",
-    name: "Pastel Mint Lehanga Choli",
+    name: "Pastel Mint Lehenga Choli",
     price: 95000,
     category: "Lehengas",
     image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&h=800&fit=crop&q=80",
@@ -200,3 +200,18 @@ export const products: Product[] = [
     slug: "mustard-yellow-coord-set"
   }
 ];
+
+export function getAllProducts() {
+  return products;
+}
+
+export function getProductBySlug(slug: string) {
+  return products.find((product) => product.slug === slug);
+}
+
+export function getAllCategories() {
+  return Array.from(new Set(products.map((product) => product.category))).map((category) => ({
+    name: category,
+    slug: category.toLowerCase().replace(/\s+/g, '-'),
+  }));
+}

@@ -36,8 +36,11 @@ export function Navbar() {
             {/* Mobile Menu Toggle */}
             <div className="lg:hidden flex items-center">
               <button
+                type="button"
                 onClick={() => setIsMenuOpen(true)}
                 aria-label="Open menu"
+                aria-expanded={isMenuOpen}
+                aria-controls="mobile-menu"
                 className="text-charcoal hover:text-champagne transition-colors"
               >
                 <Menu className="w-6 h-6" />
@@ -54,13 +57,19 @@ export function Navbar() {
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-8">
-              {['Home', 'Shop', 'New Arrivals', 'Collections', 'About'].map((item) => (
+              {[
+                { label: 'Home', href: '/' },
+                { label: 'Shop', href: '/products' },
+                { label: 'New Arrivals', href: '/products' },
+                { label: 'Collections', href: '/category/sarees' },
+                { label: 'About', href: '/about' },
+              ].map((item) => (
                 <Link
-                  key={item}
-                  href="#"
+                  key={item.label}
+                  href={item.href}
                   className="font-dm text-sm uppercase tracking-widest text-charcoal/80 hover:text-charcoal relative group py-2"
                 >
-                  {item}
+                  {item.label}
                   <span className="absolute bottom-0 left-0 w-full h-px bg-champagne scale-x-0 origin-center group-hover:scale-x-100 transition-transform duration-300" />
                 </Link>
               ))}
@@ -68,25 +77,25 @@ export function Navbar() {
 
             {/* Icons */}
             <div className="flex items-center justify-end space-x-5 lg:flex-1">
-              <button aria-label="Search" className="text-charcoal hover:text-champagne transition-colors hidden sm:block">
+              <button type="button" aria-label="Search" className="text-charcoal hover:text-champagne transition-colors hidden sm:block">
                 <Search className="w-5 h-5" />
               </button>
               
-              <m.button whileHover={{ scale: 1.15 }} aria-label="Wishlist" className="text-charcoal relative">
+              <m.button type="button" whileHover={{ scale: 1.15 }} aria-label="Wishlist" className="text-charcoal relative">
                 <Heart className="w-5 h-5" />
                 <span className="absolute -top-2 -right-2 bg-champagne text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full">
                   {wishlistCount}
                 </span>
               </m.button>
               
-              <m.button whileHover={{ scale: 1.15 }} aria-label="Cart" className="text-charcoal relative">
+              <m.button type="button" whileHover={{ scale: 1.15 }} aria-label="Cart" className="text-charcoal relative">
                 <ShoppingBag className="w-5 h-5" />
                 <span className="absolute -top-2 -right-2 bg-champagne text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full">
                   {cartCount}
                 </span>
               </m.button>
               
-              <button aria-label="Account" className="text-charcoal hover:text-champagne transition-colors hidden sm:block">
+              <button type="button" aria-label="Account" className="text-charcoal hover:text-champagne transition-colors hidden sm:block">
                 <User className="w-5 h-5" />
               </button>
             </div>
@@ -96,7 +105,7 @@ export function Navbar() {
 
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-[60] lg:hidden flex">
+        <div className="fixed inset-0 z-[60] lg:hidden flex" id="mobile-menu">
           <div className="fixed inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setIsMenuOpen(false)} />
           <m.div
             initial={{ x: '100%' }}
@@ -107,25 +116,31 @@ export function Navbar() {
           >
             <div className="flex justify-between items-center mb-10">
               <span className="font-cormorant text-2xl">Menu</span>
-              <button onClick={() => setIsMenuOpen(false)} aria-label="Close menu">
+              <button type="button" onClick={() => setIsMenuOpen(false)} aria-label="Close menu">
                 <X className="w-6 h-6" />
               </button>
             </div>
             
             <div className="flex flex-col space-y-6">
-              {['Home', 'Shop', 'New Arrivals', 'Collections', 'About'].map((item, i) => (
+              {[
+                { label: 'Home', href: '/' },
+                { label: 'Shop', href: '/products' },
+                { label: 'New Arrivals', href: '/products' },
+                { label: 'Collections', href: '/category/sarees' },
+                { label: 'About', href: '/about' },
+              ].map((item, i) => (
                 <m.div
-                  key={item}
+                  key={item.label}
                   initial={{ x: 20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.1 + i * 0.1 }}
                 >
                   <Link
-                    href="#"
+                    href={item.href}
                     onClick={() => setIsMenuOpen(false)}
                     className="font-dm text-lg uppercase tracking-wider block border-b border-blush pb-2"
                   >
-                    {item}
+                    {item.label}
                   </Link>
                 </m.div>
               ))}

@@ -41,6 +41,7 @@ export function ProductCard({ product, index }: ProductCardProps) {
 
         {/* Wishlist Button */}
         <button
+          type="button"
           onClick={(e) => { e.preventDefault(); setIsWishlisted(!isWishlisted); }}
           className="absolute top-3 right-3 z-10 p-2 rounded-full bg-white/80 backdrop-blur-sm shadow-sm hover:bg-white transition-colors"
           aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
@@ -54,14 +55,14 @@ export function ProductCard({ product, index }: ProductCardProps) {
         <Link href={`/products/${product.slug}`} className="block w-full h-full">
           <Image
             src={product.image}
-            alt={product.name}
+            alt={`${product.name} by Aura Boutique`}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
             className="object-cover transition-opacity duration-500 ease-in-out group-hover:opacity-0"
           />
           <Image
             src={product.hoverImage || product.image}
-            alt={`${product.name} alternate view`}
+            alt={`${product.name} alternate view by Aura Boutique`}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
             className="object-cover absolute top-0 left-0 opacity-0 transition-all duration-700 ease-in-out group-hover:opacity-100 group-hover:scale-105"
@@ -70,7 +71,7 @@ export function ProductCard({ product, index }: ProductCardProps) {
 
         {/* Quick Add Button */}
         <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 ease-out z-10">
-          <button className="w-full bg-white text-charcoal font-dm text-sm py-3 hover:bg-charcoal hover:text-white transition-colors">
+          <button type="button" className="w-full bg-white text-charcoal font-dm text-sm py-3 hover:bg-charcoal hover:text-white transition-colors">
             Quick Add
           </button>
         </div>

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { m } from 'framer-motion';
+import Link from 'next/link';
 import { ProductCard } from './ProductCard';
 import { products } from '@/lib/products';
 
@@ -29,6 +30,7 @@ export function BestSellers() {
           {tabs.map((tab) => (
             <button
               key={tab}
+              type="button"
               onClick={() => setActiveTab(tab)}
               className="relative px-4 py-2 font-dm text-sm whitespace-nowrap"
             >
@@ -54,9 +56,9 @@ export function BestSellers() {
       </div>
       
       <div className="mt-16 flex justify-center">
-        <button className="border border-charcoal text-charcoal font-dm px-10 py-4 hover:bg-charcoal hover:text-white transition-colors duration-300">
+        <Link href="/products" className="border border-charcoal text-charcoal font-dm px-10 py-4 hover:bg-charcoal hover:text-white transition-colors duration-300">
           View All Products
-        </button>
+        </Link>
       </div>
     </section>
   );

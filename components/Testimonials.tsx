@@ -67,7 +67,7 @@ export function Testimonials() {
                 ))}
               </div>
               <p className="font-playfair text-2xl md:text-4xl text-charcoal italic mb-10 leading-relaxed max-w-3xl">
-                "{testimonials[current].text}"
+                &quot;{testimonials[current].text}&quot;
               </p>
               <div className="flex flex-col items-center">
                 <div className="relative w-16 h-16 rounded-full overflow-hidden mb-4 border-2 border-champagne p-1">
@@ -86,6 +86,7 @@ export function Testimonials() {
           {testimonials.map((_, idx) => (
             <button
               key={idx}
+              type="button"
               onClick={() => setCurrent(idx)}
               className={`w-2 h-2 rounded-full transition-all duration-300 ${current === idx ? 'bg-champagne w-6' : 'bg-charcoal/20'}`}
               aria-label={`Go to testimonial ${idx + 1}`}

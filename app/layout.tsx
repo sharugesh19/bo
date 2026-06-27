@@ -1,32 +1,125 @@
 import type { Metadata } from 'next';
-import { Cormorant_Garamond, DM_Sans, Playfair_Display, Inter } from 'next/font/google';
 import './globals.css';
 import { Providers } from '@/components/Providers';
 
-const cormorant = Cormorant_Garamond({ subsets: ['latin'], weight: ['300', '400', '600'], variable: '--font-cormorant', display: 'swap' });
-const dm = DM_Sans({ subsets: ['latin'], weight: ['300', '400', '500'], variable: '--font-dm', display: 'swap' });
-const playfair = Playfair_Display({ subsets: ['latin'], weight: ['400'], style: ['italic'], variable: '--font-playfair', display: 'swap' });
-const inter = Inter({ subsets: ['latin'], weight: ['400'], variable: '--font-inter', display: 'swap' });
+const siteUrl = 'https://auraboutique.in';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
-    template: '%s | Aura Boutique — Premium Indian Fashion',
-    default: 'Aura Boutique — Luxury Indian Fashion & Designer Wear Online'
+    template: '%s | Aura Boutique',
+    default: 'Aura Boutique - Luxury Indian Fashion & Designer Wear Online',
   },
-  description: 'Shop India\'s finest boutique fashion. Exclusive sarees, lehengas, designer kurtas & gowns. Free shipping above ₹2999. Trusted by 50,000+ customers.',
-  keywords: ['boutique fashion india', 'designer sarees online', 'luxury lehenga', 'premium indian wear', 'bridal boutique india'],
+  description:
+    "Shop India's finest boutique fashion. Exclusive sarees, lehengas, designer kurtas and gowns with premium craftsmanship.",
+  keywords: [
+    'boutique fashion india',
+    'designer sarees online',
+    'luxury lehenga india',
+    'premium indian wear',
+    'bridal boutique india',
+    'festive collection india',
+    'designer kurta sets',
+    'indo western gowns',
+    'buy sarees online india',
+    'indian ethnic wear online',
+  ],
+  authors: [{ name: 'Aura Boutique', url: siteUrl }],
+  creator: 'Aura Boutique',
+  publisher: 'Aura Boutique Pvt. Ltd.',
+  category: 'fashion',
+  alternates: {
+    canonical: siteUrl,
+  },
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: 'https://auraboutique.in',
+    url: siteUrl,
     siteName: 'Aura Boutique',
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630 }]
+    title: 'Aura Boutique - Luxury Indian Fashion & Designer Wear',
+    description: "India's premium online boutique. Shop exclusive sarees, lehengas and designer wear.",
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Aura Boutique luxury Indian fashion',
+      },
+    ],
   },
-  twitter: { card: 'summary_large_image', site: '@auraboutique' },
-  robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
-  alternates: { canonical: 'https://auraboutique.in' },
-  verification: { google: 'PLACEHOLDER_VERIFICATION_CODE' }
-}
+  twitter: {
+    card: 'summary_large_image',
+    site: '@auraboutique',
+    creator: '@auraboutique',
+    title: 'Aura Boutique - Luxury Indian Fashion',
+    description: "India's premium boutique with exclusive sarees, lehengas and designer wear.",
+    images: ['/og-image.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'REPLACE_WITH_GOOGLE_SEARCH_CONSOLE_CODE',
+  },
+  icons: {
+    icon: '/favicon.ico',
+  },
+  manifest: '/site.webmanifest',
+};
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Aura Boutique',
+  url: siteUrl,
+  logo: `${siteUrl}/favicon.ico`,
+  description: 'India\'s premium luxury boutique for designer sarees, lehengas and ethnic wear.',
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+91-XXXXXXXXXX',
+    contactType: 'customer service',
+    areaServed: 'IN',
+    availableLanguage: ['English', 'Hindi'],
+  },
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'YOUR ADDRESS',
+    addressLocality: 'YOUR CITY',
+    addressRegion: 'YOUR STATE',
+    postalCode: 'XXXXXX',
+    addressCountry: 'IN',
+  },
+  sameAs: [
+    'https://instagram.com/auraboutique',
+    'https://facebook.com/auraboutique',
+    'https://twitter.com/auraboutique',
+    'https://www.youtube.com/@auraboutique',
+  ],
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Aura Boutique',
+  url: siteUrl,
+  description: 'India\'s premium luxury boutique for the modern Indian woman.',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: `${siteUrl}/search?q={search_term_string}`,
+    },
+    'query-input': 'required name=search_term_string',
+  },
+};
 
 export default function RootLayout({
   children,
@@ -34,44 +127,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${dm.variable} ${playfair.variable} ${inter.variable}`}>
+    <html lang="en-IN" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://images.unsplash.com" />
+        <meta name="theme-color" content="#C9A96E" />
+        <meta name="msapplication-TileColor" content="#C9A96E" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@graph": [
-                {
-                  "@type": "Organization",
-                  "name": "Aura Boutique",
-                  "url": "https://auraboutique.in",
-                  "logo": "https://auraboutique.in/logo.png",
-                  "contactPoint": { "@type": "ContactPoint", "telephone": "+91-XXXXXXXXXX", "contactType": "customer service" },
-                  "sameAs": ["https://instagram.com/auraboutique", "https://facebook.com/auraboutique"]
-                },
-                {
-                  "@type": "WebSite",
-                  "name": "Aura Boutique",
-                  "url": "https://auraboutique.in",
-                  "potentialAction": {
-                    "@type": "SearchAction",
-                    "target": "https://auraboutique.in/search?q={search_term_string}",
-                    "query-input": "required name=search_term_string"
-                  }
-                }
-              ]
-            }),
+            __html: JSON.stringify([organizationSchema, websiteSchema]).replace(/</g, '\\u003c'),
           }}
         />
       </head>
-      <body>
-        <Providers>
-          {children}
-        </Providers>
+      <body className="antialiased">
+        <a href="#main-content" className="skip-to-content">
+          Skip to main content
+        </a>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
